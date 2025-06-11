@@ -1,0 +1,7 @@
+langgraph
+langchain
+langchain-google-genai
+dotenv
+langchain_chroma
+langchain_community
+pypdf
