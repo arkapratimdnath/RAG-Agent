@@ -46,4 +46,4 @@ This project is an intelligent Retrieval-Augmented Generation (RAG) agent design
 1. The user enters a question.
 2. Gemini 2.0 Flash model checks if document retrieval is needed.
 3. If needed, the agent calls the retriever tool.
-4. The retrieved documents are summarised by Gemini and presented as an answer.
+4. The retrieved documents are summarised by Gemini and presented as an answer. 
