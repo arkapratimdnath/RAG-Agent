@@ -19,7 +19,7 @@ llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash-001")
 embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
 
-pdf_path = "Stock_Market_Performance_2024.pdf"
+pdf_path = "/home/arkapratim/Downloads/PROJECTS/RAG-Agent/Arogya Sanjeevani Policy - CIN - U10200WB1906GOI001713 1.pdf"
 
 
 
@@ -45,7 +45,7 @@ text_splitter = RecursiveCharacterTextSplitter(
 pages_split = text_splitter.split_documents(pages) 
 
 persist_directory = r"/home/arkapratim/Downloads/PROJECTS/RAG-Agent/"
-collection_name = "Stocks"
+collection_name = "Policy_Collection"
 
 # If our collection does not exist in the directory, we create using the os command
 if not os.path.exists(persist_directory):
@@ -76,13 +76,13 @@ retriever = vectorstore.as_retriever(
 @tool
 def retriever_tool(query: str) -> str:
     """
-    This tool searches and returns the information from the Stock Market Performance 2024 document.
+    This tool searches and returns the information from the Arogya sanjeevani policy document.
     """
 
     docs = retriever.invoke(query)
 
     if not docs:
-        return "I found no relevant information in the Stock Market Performance 2024 document."
+        return "I found no relevant information in the Arogya sanjeevani policy document."
     
     results = []
     for i, doc in enumerate(docs):
@@ -106,7 +106,7 @@ def should_continue(state: AgentState):
 
 
 system_prompt = """
-You are an intelligent AI assistant who answers questions about Stock Market Performance in 2024 based on the PDF document loaded into your knowledge base.
+You are an intelligent AI assistant who answers questions about various definition in insurance policy, benifits in insurance policy,locations of closest Insurance Ombudsman along with relevent links based on the PDF document loaded into your knowledge base.
 Use the retriever tool available to answer questions about the stock market performance data. You can make multiple calls if needed.
 If you need to look up some information before asking a follow up question, you are allowed to do that!
 Please always cite the specific parts of the documents you use in your answers.
